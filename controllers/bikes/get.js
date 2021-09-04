@@ -1,10 +1,18 @@
-const { bike: service } = require('../../services')
+const { bike: bikeService, type: typeService } = require('../../services')
 
 const get = async (req, res, next) => {
   const { query } = req
 
   try {
-    const result = await service.get(query)
+    const bikes = await bikeService.get(query)
+    const types = await typeService.get()
+    const result = bikes.map(bike => {
+      const typeObj = types.find(type => String(type._id) === String(bike.type))
+      return {
+        ...bike._doc,
+        type: typeObj
+      }
+    })
 
     res.json({
       status: 'success',
