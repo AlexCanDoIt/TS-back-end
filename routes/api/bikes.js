@@ -4,9 +4,7 @@ const { validateBike } = require('../../model/schemas')
 const { bikes: ctrl } = require('../../controllers')
 const router = express.Router()
 
-router.get('/available', ctrl.getAvailable)
-
-router.get('/rented', ctrl.getRented)
+router.get('/', ctrl.get)
 
 router.post('/', express.json(), validateMiddleware(validateBike), ctrl.add)
 

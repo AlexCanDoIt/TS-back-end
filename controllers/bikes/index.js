@@ -1,12 +1,10 @@
-const getAvailable = require('./getAvailable')
-const getRented = require('./getRented')
+const get = require('./get')
 const add = require('./add')
 const del = require('./del')
 const toggleStatus = require('./toggleStatus')
 
 module.exports = {
-  getAvailable,
-  getRented,
+  get,
   add,
   del,
   toggleStatus

@@ -4,7 +4,7 @@ const get = async (req, res, next) => {
   const { query } = req
 
   try {
-    const result = await service.get({ status: 'available', ...query })
+    const result = await service.get(query)
 
     res.json({
       status: 'success',
