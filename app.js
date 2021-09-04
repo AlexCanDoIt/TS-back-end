@@ -11,6 +11,7 @@ app.use(logger(formatsLogger))
 app.use(cors())
 
 app.use('/api/v1/bikes', api.bikes)
+app.use('/api/v1/types', api.types)
 
 app.use((_, res) => {
   res.status(404).json({

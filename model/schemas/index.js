@@ -1,6 +1,9 @@
 const { bikeSchema, validateBike } = require('./bike')
+const { typeSchema, validateType } = require('./type')
 
 module.exports = {
   bikeSchema,
-  validateBike
+  validateBike,
+  typeSchema,
+  validateType
 }

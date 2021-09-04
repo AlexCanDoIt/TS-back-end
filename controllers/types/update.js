@@ -1,4 +1,4 @@
-const { bike: service } = require('../../services')
+const { type: service } = require('../../services')
 
 const update = async (req, res, next) => {
   const { id } = req.params

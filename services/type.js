@@ -1,18 +1,18 @@
-const { Bike } = require('../model')
+const { Type } = require('../model')
 
 const get = (query) => {
-  return Bike.find(query)
+  return Type.find(query)
 }
 
-const getById = (id) => Bike.findById(id)
+const getById = (id) => Type.findById(id)
 
-const add = (newBike) => {
-  return Bike.create(newBike)
+const add = (newType) => {
+  return Type.create(newType)
 }
 
 const del = async (id) => {
   try {
-    const result = await Bike.findByIdAndDelete(id)
+    const result = await Type.findByIdAndDelete(id)
     return result
   } catch (err) {
     if (err.message.includes('Cast to ObjectId failed')) {
@@ -23,9 +23,9 @@ const del = async (id) => {
   }
 }
 
-const update = async (id, updateBike) => {
+const update = async (id, updateType) => {
   try {
-    const result = await Bike.findByIdAndUpdate(id, updateBike, { new: true })
+    const result = await Type.findByIdAndUpdate(id, updateType, { new: true })
     return result
   } catch (err) {
     if (err.message.includes('Cast to ObjectId failed')) {

@@ -8,19 +8,26 @@ const bikeSchema = Schema({
     required: [true, 'Set name for bike']
   },
   type: {
-    type: String,
-    enum: ['custom', 'road', 'mountain'],
-    default: 'custom'
+    type: Schema.Types.ObjectId,
+    ref: 'type',
+    required: [true, 'Set type for bike']
   },
   price: {
     type: Number,
     min: 0.01,
     required: [true, 'Set price for bike']
   },
-  status: {
-    type: String,
-    enum: ['available', 'rented'],
-    default: 'available'
+  rented: {
+    type: Boolean,
+    default: false
+  },
+  rentalTimeStamp: {
+    type: Number,
+    default: null
+  },
+  returnTimeStamp: {
+    type: Number,
+    default: null
   },
 },
 {
@@ -31,9 +38,9 @@ const bikeSchema = Schema({
 const validateBike = (newBike) => {
   const schema = Joi.object({
     name: Joi.string().min(2).required(),
-    type: Joi.string(),
+    type: Joi.string().required(),
     price: Joi.number().min(0.01).required(),
-    status: Joi.string()
+    rented: Joi.boolean()
   })
   const { error } = schema.validate(newBike)
   return error
