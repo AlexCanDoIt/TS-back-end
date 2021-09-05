@@ -22,7 +22,7 @@ const get = async (req, res, next) => {
       code: 200,
       data: {
         list: result,
-        total
+        total: total.toFixed(2)
       }
     })
   } catch (err) {
