@@ -7,15 +7,7 @@ const get = async (req, res, next) => {
     let total = 0
     const bikes = await bikeService.get(query)
     const types = await typeService.get()
-    const {
-      _id,
-      name,
-      type,
-      price,
-      rented,
-      rentalTimeStamp,
-      returnTimeStamp
-    } = bikes.map(bike => {
+    const result = bikes.map(bike => {
       if (bike.rented) { total = total + bike.price }
       const typeObj = types.find(type => String(type._id) === String(bike.type))
 
@@ -29,15 +21,7 @@ const get = async (req, res, next) => {
       status: 'success',
       code: 200,
       data: {
-        list: {
-          _id,
-          name,
-          type,
-          price,
-          rented,
-          rentalTimeStamp,
-          returnTimeStamp
-        },
+        list: result,
         total
       }
     })
