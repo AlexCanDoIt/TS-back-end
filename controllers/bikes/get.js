@@ -13,8 +13,7 @@ const get = async (req, res, next) => {
 
       return {
         ...bike._doc,
-        type: typeObj,
-        total
+        type: typeObj
       }
     })
 
@@ -22,7 +21,8 @@ const get = async (req, res, next) => {
       status: 'success',
       code: 200,
       data: {
-        result
+        list: result,
+        total
       }
     })
   } catch (err) {
